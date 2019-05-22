@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>To Do List</title>
+</head>
+<body>
+<h1 class="display-4 p-5 text-center text-primary">Tasker</h1>
+<div class="container d-flex justify-content-center">
+    <form method="POST" action="/main/" class="form-inline">
+        <div class="form-group">
+            <input type="hidden" name="id_to_edit" value="{{task.id}}">
+            <input type="text" name="edit" class="form-control" placeholder="Your Task Here..." value="{{task.text}}">
+            <button class="btn btn-outline-primary" type="submit">Save</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

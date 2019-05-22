@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>To Do List</title>
+</head>
+<body>
+<h1 class="display-4 p-5 text-center text-primary">Tasker</h1>
+<div class="container d-flex justify-content-center">
+    <ul class="list-group w-50">
+        {%for todo in todos%}
+            <li class="list-group-item text-center d-flex justify-content-end align-items-center">
+                <span class="mr-auto">{{todo.text}}</span>
+                <form method="POST" action="/edittask/{{todo.id}}" class="px-3">
+                    <input type="hidden" name="id_to_delete" value="{{todo.id}}">
+                    <button class="btn btn-outline-secondary" type="submit">Edit</button>
+                </form>
+                <form method="POST" action="/main/">
+                    <input type="hidden" name="id_to_delete" value="{{todo.id}}">
+                    <button class="btn btn-outline-primary" type="submit">Delete</button>
+                </form>
+            </li>
+        {%endfor%}
+</ul>
+</div>
+<div class="container w-25 p-5 d-flex justify-content-center">
+    <a href="/addtask" class="btn btn-outline-primary">Add Task</a>
+</div>
+</body>
+</html>
