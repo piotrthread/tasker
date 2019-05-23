@@ -9,26 +9,28 @@
     <title>To Do List</title>
 </head>
 <body>
-<h1 class="display-4 p-5 text-center text-primary">Tasker</h1>
-<div class="container d-flex justify-content-center">
-    <ul class="list-group w-50">
-        {%for todo in todos%}
-            <li class="list-group-item text-center d-flex justify-content-end align-items-center">
-                <span class="mr-auto">{{todo.text}}</span>
+<h1 class="display-4 pt-5 text-center text-primary">Tasker</h1>
+<div class="container w-25 p-5 d-flex justify-content-center">
+    <a href="/addtask" class="btn btn-outline-primary">Add Task</a>
+</div>
+<div class="row d-flex flex-column align-items-center">
+    {%for todo in todos%}
+        <div class="border col-4 p-4 mb-3">
+            <h5>{{ todo.text }}</h5>
+            <small class="text-muted">{{ todo.details }}</small>
+            <div class="d-flex justify-content-end mt-3">
+                <small class="text-muted border-top mr-auto">{{ todo.creation_date }}</small>
                 <form method="POST" action="/edittask/{{todo.id}}" class="px-3">
                     <input type="hidden" name="id_to_delete" value="{{todo.id}}">
                     <button class="btn btn-outline-secondary" type="submit">Edit</button>
                 </form>
-                <form method="POST" action="/main/">
+                <form method="POST" action="/">
                     <input type="hidden" name="id_to_delete" value="{{todo.id}}">
                     <button class="btn btn-outline-primary" type="submit">Delete</button>
                 </form>
-            </li>
-        {%endfor%}
-</ul>
-</div>
-<div class="container w-25 p-5 d-flex justify-content-center">
-    <a href="/addtask" class="btn btn-outline-primary">Add Task</a>
+            </div>
+        </div>
+    {% endfor %}
 </div>
 </body>
 </html>

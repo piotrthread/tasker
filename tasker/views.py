@@ -10,11 +10,12 @@ def main(request):
         if request.POST.get("id_to_edit"):
             task_to_edit = ToDo.objects.get(pk=request.POST.get("id_to_edit"))
             task_to_edit.text = request.POST.get("edit")
+            task_to_edit.details = request.POST.get("details")
             task_to_edit.save()
         if request.POST.get("todo"):
-            ToDo.objects.create(text=request.POST.get("todo"))
+            ToDo.objects.create(text=request.POST.get("todo"), details=request.POST.get("details"))
 
-    todos = ToDo.objects.all().order_by("creation_date")
+    todos = ToDo.objects.all().order_by("-creation_date")
 
     return render(request, 'main.html', {
         'todos': todos

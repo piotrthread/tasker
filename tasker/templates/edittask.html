@@ -11,12 +11,16 @@
 <body>
 <h1 class="display-4 p-5 text-center text-primary">Tasker</h1>
 <div class="container d-flex justify-content-center">
-    <form method="POST" action="/main/" class="form-inline">
-        <div class="form-group">
-            <input type="hidden" name="id_to_edit" value="{{task.id}}">
+    <form method="POST" action="/" class="d-flex flex-column align-items-center w-50">
+        <input type="hidden" name="id_to_edit" class="form-control" value="{{task.id}}">
+        <div class="form-group w-100">
             <input type="text" name="edit" class="form-control" placeholder="Your Task Here..." value="{{task.text}}">
-            <button class="btn btn-outline-primary" type="submit">Save</button>
         </div>
+        <div class="form-group w-100">
+            <input type="text" name="details" class="form-control" placeholder="Details..." value="{{task.details}}">
+        </div>
+            <button class="btn btn-outline-primary mt-4" type="submit">Save</button>
+
     </form>
 </div>
 </body>

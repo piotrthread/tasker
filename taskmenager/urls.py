@@ -19,7 +19,7 @@ from tasker.views import main, addtask, edittask
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('main/', main),
+    path('', main),
     path('addtask/', addtask),
     path('edittask/<task_id>', edittask),
 ]
